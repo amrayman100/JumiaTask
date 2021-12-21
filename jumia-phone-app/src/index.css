@@ -1,0 +1,127 @@
+* {
+    font-family: "Montserrat";
+}
+
+body {
+    margin: 0;
+    font-family: "Montserrat" !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/*! @import */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    @apply px-4 py-2 font-semibold rounded-md shadow-md;
+}
+
+.btn-green {
+    @apply text-white bg-green-500 hover:bg-green-700;
+}
+
+.btn-blue {
+    @apply text-white bg-blue-500 hover:bg-blue-700;
+}
+
+.input_field {
+    @apply w-full px-4 py-2 text-base border border-gray-300 rounded-md focus:outline-none;
+}
+
+.input_field:focus {
+    border: 0.5px solid #4e73f8;
+}
+
+.footer-container {
+    margin-top: 1rem;
+    padding-bottom: 10px;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    margin-bottom: 14px;
+}
+
+.container {
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    height: 60vh;
+    background-repeat: no-repeat;
+}
+
+.btn-form-primary {
+    @apply justify-center w-1/2 p-3 font-semibold text-white transition rounded-md shadow-md cursor-pointer hover:bg-blue-500;
+    background-color: #4e73f8;
+    /* font-family: montserrat; */
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.skv-btn-primary {
+    background-color: #4e73f8 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    height: 48px !important;
+}
+
+svg {
+    display: inline-block !important;
+}
+
+.req_label {
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    font-size: 12px;
+    color: #ff0000;
+    float: right;
+}
+
+.icon-right {
+    margin-left: auto;
+}
+
+.table-pg {
+    width: min-content;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.customIcon chakra-select__icon-wrapper {
+    margin-inline-start: 20px;
+}
+
+body {
+    height: 100%;
+}
+
+#app div {
+    height: 100%;
+}
+
+.html {
+    height: 100%;
+}
+.body {
+    height: 100%;
+}
+
+.app {
+    height: "100%";
+    position: "absolute";
+    left: "0px";
+    width: "100%";
+    overflow: "hidden";
+}

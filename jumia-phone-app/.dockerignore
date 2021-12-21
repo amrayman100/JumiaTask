@@ -1,0 +1,12 @@
+npm-debug.log
+.dockerignore
+node_modules
+.git
+.gitignore
+README.md
+LICENSE
+.vscode
+kubernetes.yml
+az-k8s-config
+.gitlab-ci.yml
+build

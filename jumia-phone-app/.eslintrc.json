@@ -1,0 +1,37 @@
+{
+    "extends": ["plugin:@typescript-eslint/recommended", "plugin:jest/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "jest"],
+    "rules": {
+        "@typescript-eslint/indent": ["off"],
+        "linebreak-style": ["off"],
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/array-type": "off",
+        "@typescript-eslint/no-object-literal-type-assertion": "off",
+        "no-unused-vars": "off",
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "warn",
+        "jest/no-identical-title": "warn",
+        "jest/prefer-to-have-length": "warn",
+        "import/extensions": "off",
+        "no-undef": "warn",
+        "import/no-unresolved": "off",
+        "jest/valid-expect": "warn",
+        "no-use-before-define": "off",
+        "import/prefer-default-export": "off",
+        "no-debugger": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-use-before-define": ["warn"],
+        "@typescript-eslint/triple-slash-reference": ["off"]
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}
