@@ -1,5 +1,5 @@
 {
-    "baseUrl" : "http://localhost:9090/#/",
+    "baseUrl" : "https://jumia-task.vercel.app/",
     "viewportWidth": 1920,
     "viewportHeight": 1080
 }
