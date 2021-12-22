@@ -41,8 +41,6 @@ function TablePaginated({
         prepareRow,
         page,
         state: { pageIndex, pageSize, globalFilter },
-        preGlobalFilteredRows,
-        setGlobalFilter,
     } = useTable(
         {
             columns,
@@ -60,12 +58,12 @@ function TablePaginated({
             manualPagination: true,
             pageCount: totalPage,
         },
-        useFilters, // useFilters!
+        useFilters,
         useGlobalFilter,
         useSortBy,
-        usePagination // new
+        usePagination
     );
-    // Render the UI for your table
+
     const [isLocalButtonDisabled, setIsLocalButtonDisabled] = useState(buttonDisabled);
 
     useEffect(() => {
@@ -76,8 +74,8 @@ function TablePaginated({
     return (
         <div className="space-y-8">
             {page.length > 0 && (
-                <div className="flex items-center justify-between text-sm">
-                    <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                <div className="">
+                    <div className="sm:flex-1 sm:flex sm:items-center sm:justify-between">
                         <div className="flex items-baseline gap-x-2">
                             <label>
                                 <span className="sr-only">{"Items Per Page"}</span>
@@ -97,7 +95,7 @@ function TablePaginated({
                         </div>
                         <div>
                             <nav
-                                className="relative z-0 inline-flex -space-x-px text-sm rounded-md shadow-sm"
+                                className="relative z-0 inline-flex -space-x-px text-sm rounded-md shadow-sm mrgin-btn"
                                 aria-label="Pagination">
                                 <Button
                                     mr="10px"
@@ -129,15 +127,12 @@ function TablePaginated({
                                     {headerGroups.map((headerGroup: any) => (
                                         <tr {...headerGroup?.getHeaderGroupProps()}>
                                             {headerGroup.headers.map((column: any) => (
-                                                // Add the sorting props to control sorting. For this example
-                                                // we can add them into the header props
                                                 <th
                                                     scope="col"
                                                     className="px-6 py-3 text-sm font-semibold tracking-wider text-left text-black group"
                                                     {...column.getHeaderProps(column.getSortByToggleProps())}>
                                                     <div className="flex items-center justify-between">
                                                         {column.render("Header")}
-                                                        {/* Add a sort direction indicator */}
                                                         <span>
                                                             {column.isSorted ? (
                                                                 column.isSortedDesc ? (
