@@ -20,7 +20,7 @@ export default function DropDown({ formControl, options, label, error }: DropDow
     }, [formControl.value]);
     return (
         <Box>
-            <FormLabel fontWeight="600" fontSize="14" as="legend" color="teal">
+            <FormLabel fontWeight="600" fontSize="14" as="legend">
                 {t(`${label}`)}
             </FormLabel>
             <div key={value}>

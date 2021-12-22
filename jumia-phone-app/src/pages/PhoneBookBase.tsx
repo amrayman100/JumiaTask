@@ -23,6 +23,7 @@ export default function PhoneBookBase() {
     const { t, i18n: { language } } = useTranslation();
     const [phoneNumberList, setPhoneNumberList] = useState<PhoneNumber[]>([]);
     const bg = useColorModeValue('brandLightGrey', 'brandJumiaBlackBlue')
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const {
         register,
@@ -37,14 +38,25 @@ export default function PhoneBookBase() {
 
     const {
         data: responseData,
+        isSuccess,
+        error
     } = useGetPhoneNumbers(page, perPage, stateFiter, countryFiter);
 
     useEffect(() => {
+        setIsButtonDisabled(false);
         responseData && responseData?.phoneNumberList.length > 0 && setPhoneNumberList(responseData?.phoneNumberList);
-        if (responseData?.phoneNumberList.length == 0) {
-            setPage(page - 1)
+        if (responseData?.phoneNumberList.length == 1) {
+            setPage(page - 0)
         }
     }, [responseData]);
+
+    useEffect(() => {
+        isSuccess && setIsButtonDisabled(false);
+    }, [isSuccess]);
+
+    useEffect(() => {
+        error && setIsButtonDisabled(false);
+    }, [error])
 
 
 
@@ -115,6 +127,10 @@ export default function PhoneBookBase() {
         </HStack>
     }
 
+    const disableButtonUtil = () => {
+        setIsButtonDisabled(true);
+    }
+
     return (
         <>
             <Box className="h-screen text-gray-500" bg={bg}>
@@ -123,6 +139,8 @@ export default function PhoneBookBase() {
                     <Box className="mt-6" bg={bg}>
                         <Box margin="auto" bg={bg}>
                             <TablePaginated
+                                disableButton={disableButtonUtil}
+                                buttonDisabled={isButtonDisabled}
                                 columns={columns}
                                 data={phoneNumberList}
                                 currentPage={page}

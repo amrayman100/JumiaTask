@@ -6,7 +6,6 @@ export default function ColorModeToggle() {
     return (
         <header>
             <Button onClick={toggleColorMode}
-                color="teal"
                 rightIcon={colorMode === 'light' ? <BsMoonFill /> : <BsFillSunFill />}
             >
                 Toggle {colorMode === 'light' ? 'Dark' : 'Light'}

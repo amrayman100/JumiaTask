@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { Button } from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from "react";
 import {
     FaAngleLeft, FaAngleRight, FaFile,
     FaSort,
@@ -6,7 +7,6 @@ import {
     FaSortUp
 } from "react-icons/fa";
 import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from "react-table";
-import { PageButton } from "./NewUtils";
 
 interface TablePaginationProps {
     setPerPage(num: any): void;
@@ -19,6 +19,8 @@ interface TablePaginationProps {
     enableCreate?: false;
     handleCreate?(): void;
     createText?: string;
+    buttonDisabled: boolean;
+    disableButton(): void
 }
 
 function TablePaginated({
@@ -29,6 +31,8 @@ function TablePaginated({
     currentPage,
     perPage,
     totalPage,
+    buttonDisabled,
+    disableButton
 }: TablePaginationProps) {
     const {
         getTableProps,
@@ -36,15 +40,6 @@ function TablePaginated({
         headerGroups,
         prepareRow,
         page,
-        // canPreviousPage,
-        // canNextPage,
-        pageOptions,
-        // pageCount,
-        // gotoPage,
-        // nextPage,
-        // previousPage,
-        // setPageSize,
-
         state: { pageIndex, pageSize, globalFilter },
         preGlobalFilteredRows,
         setGlobalFilter,
@@ -71,6 +66,13 @@ function TablePaginated({
         usePagination // new
     );
     // Render the UI for your table
+    const [isLocalButtonDisabled, setIsLocalButtonDisabled] = useState(buttonDisabled);
+
+    useEffect(() => {
+        setIsLocalButtonDisabled(buttonDisabled)
+    }, [buttonDisabled])
+
+
     return (
         <div className="space-y-8">
             {page.length > 0 && (
@@ -97,18 +99,21 @@ function TablePaginated({
                             <nav
                                 className="relative z-0 inline-flex -space-x-px text-sm rounded-md shadow-sm"
                                 aria-label="Pagination">
-                                <PageButton
-                                    onClick={() => setPage((s: number) => (s === 0 ? 0 : s - 1))}
+                                <Button
+                                    mr="10px"
+                                    disabled={isLocalButtonDisabled}
+                                    onClick={() => { setPage((s: number) => (s === 0 ? 0 : s - 1)); pageIndex > 0 && disableButton() }}
                                 >
                                     <FaAngleLeft className="w-4 h-4 text-gray-400" aria-hidden="true" />
                                     <span>{"Previous"}</span>
-                                </PageButton>
-                                <PageButton
-                                    onClick={() => setPage((s: number) => s + 1)}
+                                </Button>
+                                <Button
+                                    disabled={isLocalButtonDisabled}
+                                    onClick={() => { setPage((s: number) => s + 1); disableButton() }}
                                 >
                                     <span>{"Next"}</span>
                                     <FaAngleRight className="w-4 h-4 text-gray-400" aria-hidden="true" />
-                                </PageButton>
+                                </Button>
                             </nav>
                         </div>
                     </div>
