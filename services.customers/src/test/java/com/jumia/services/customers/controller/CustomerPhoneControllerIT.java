@@ -1,8 +1,6 @@
 package com.jumia.services.customers.controller;
 
-import com.jayway.jsonpath.JsonPath;
 import com.jumia.services.customers.Application;
-import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.hamcrest.Matchers.*;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -42,6 +39,4 @@ public class CustomerPhoneControllerIT {
                         .andExpect(jsonPath("$.numberOfItems", is(0)))
                 .andReturn();
     }
-
-
 }

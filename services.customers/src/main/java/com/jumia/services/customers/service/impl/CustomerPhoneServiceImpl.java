@@ -5,7 +5,6 @@ import com.jumia.services.customers.exception.MetadataSourceNotSetException;
 import com.jumia.services.customers.exception.NumberTooSmallException;
 import com.jumia.services.customers.logging.Loggable;
 import com.jumia.services.customers.matcher.NumberMatcher;
-import com.jumia.services.customers.matcher.impl.PhoneNumberMatcher;
 import com.jumia.services.customers.model.NumberValidationResponse;
 import com.jumia.services.customers.model.PaginatedPhoneNumberResponse;
 import com.jumia.services.customers.model.PhoneMetaData;

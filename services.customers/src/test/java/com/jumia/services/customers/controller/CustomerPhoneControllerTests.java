@@ -81,5 +81,4 @@ public class CustomerPhoneControllerTests {
         customerPhoneController.getPhoneNumbers(CustomerPhoneControllerTestUtils.VALID,null,pageable);
         Mockito.verify(customerService).getCustomerPhoneNumbers((Mockito.any(Pageable.class)), Mockito.any(), Mockito.any());
     }
-
 }

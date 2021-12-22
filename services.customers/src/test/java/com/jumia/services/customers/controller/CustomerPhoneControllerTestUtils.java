@@ -1,9 +1,7 @@
 package com.jumia.services.customers.controller;
 
-import com.jumia.services.customers.entity.Customer;
 import com.jumia.services.customers.model.PaginatedPhoneNumberResponse;
 import com.jumia.services.customers.model.PhoneNumberDTO;
-import org.springframework.data.domain.PageImpl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +46,4 @@ public class CustomerPhoneControllerTestUtils {
         paginatedPhoneNumberResponseBuilder.phoneNumberList(phoneNumbers);
         return paginatedPhoneNumberResponseBuilder.build();
     }
-
-
 }

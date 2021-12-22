@@ -8,13 +8,11 @@ import com.jumia.services.customers.metadata.PhoneMetadataSource;
 import com.jumia.services.customers.metadata.impl.PhoneJsonMetadataSource;
 import com.jumia.services.customers.model.NumberValidationResponse;
 import com.jumia.services.customers.model.PhoneMetaData;
-import com.jumia.services.customers.service.impl.CustomerPhoneServiceImpl;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -93,5 +91,4 @@ public class PhoneNumberMatcherTests {
         assertNull(phoneMetaData);
         Mockito.verify(metadataSource).getValidatorCountryMap();
     }
-
 }

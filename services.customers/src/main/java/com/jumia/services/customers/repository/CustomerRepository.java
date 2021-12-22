@@ -13,6 +13,4 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Repository
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
     Page<Customer> findAllByPhoneIgnoreCaseStartsWith(String code, Pageable pageable);
-
-    Page<Customer> findAllByPhoneRegex(String regex, Pageable pageable);
 }

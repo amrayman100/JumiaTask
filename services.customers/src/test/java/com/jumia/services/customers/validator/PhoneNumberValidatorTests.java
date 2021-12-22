@@ -37,6 +37,4 @@ public class PhoneNumberValidatorTests {
         assertEquals(PhoneNumberValidatorTestsUtils.COUNTRY_NAME,numberValidationResponse.getOrigin());
         assertFalse(numberValidationResponse.isValid());
     }
-
-
 }

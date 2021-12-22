@@ -20,41 +20,4 @@ public class PhoneNumberDTO {
     private String code;
     private String state;
     private String country;
-
-//    public PhoneNumberDTO(){
-//
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getNumber() {
-//        return number;
-//    }
-//
-//    public void setNumber(String number) throws MetadataSourceNotSetException, NumberTooSmallException, CodeNotFoundException {
-//        this.number = number;
-//        PhoneNumberMatcher phoneNumberMatcher = new PhoneNumberMatcher(new PhoneJsonMetadataSource());
-//        NumberValidationResponse numberValidationResponse = phoneNumberMatcher.getPhoneType(number);
-//        this.state = numberValidationResponse.isValid() ? "Valid" : "Invalid";
-//        this.country = numberValidationResponse.getOrigin();
-//        this.code = numberValidationResponse.getCode();
-//    }
-//
-//    public String getCode() {
-//        return code;
-//    }
-//
-//    public String getState() {
-//        return state;
-//    }
-//
-//    public String getCountry() {
-//        return country;
-//    }
 }

@@ -17,5 +17,4 @@ public class PhoneJsonMetadataSourceTestUtils {
         phoneNumberValidators.add(PhoneNumberValidator.builder().phoneMetaData(PhoneMetaData.builder().code("(258)").countryName("Mozambique").regex("\\(258\\)\\ ?[28]\\d{7,8}$").build()).build());
         return phoneNumberValidators;
     }
-
 }
