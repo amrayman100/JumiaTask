@@ -9,7 +9,7 @@ export default function Navbar() {
             <Box as="nav" marginTop="0" position="sticky" top="0" right="0" height="60px" bg={navBarBg} zIndex="1000" borderBottomColor="white" boxShadow="5px 5px 10px rgba(0,0,0, 0.3); ">
                 <Box paddingTop="10px" paddingBottom="10px" borderBottomColor="white">
                     <Flex justifyContent="space-between" alignContent="center">
-                        <Box><Image width="30%" height="auto" marginInlineStart="15px"
+                        <Box><Image width={["60%", "30", "30"]} height="auto" marginInlineStart="15px"
                             src={jumiaLogoSrc} /></Box>
                         <HStack spacing="20px">
                             <Box>
