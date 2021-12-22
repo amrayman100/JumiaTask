@@ -20,7 +20,7 @@ It is deployed using vercel with github integration
 is located and 
 run the command "docker-compose up" from that directory
 * After a few minutes when the 
-command is done and you can see from the logs in the terminal that spring boot is running navigate to http://localhost:9090/ to the web app
+command is done and you can see from the logs in the terminal that the frontend project has been built and spring boot is running navigate to http://localhost:9090/ to the web app
 
 * To run without docker run the backend application as a basic spring boot project and for the frontend run the commands "npm install" and "npm start"
 
@@ -29,7 +29,7 @@ command is done and you can see from the logs in the terminal that spring boot i
 This is the spring boot backend project it conatins the following packages
 
 * **metadata:** Contains classes related to fetching metadata related to phone number validations from a json file (and in the future from other sources if required) and returns maps mapping country names and codes and their corresponding validators.
-* **matcher:**  Package responsible for consuming the metadata source and extrating the phone number and matching it with required validators and returning the validation result
+* **matcher:**  Package responsible for consuming the metadata source and extracting the code from the phone number and matching it with required validators and returning the validation result
 * **repository:**  Database access layer for the sqlite database
 * **service:**  Business layer which acts as facade and returns the list of phone numbers
 * **controllers:**  Basic spring controller layer for the rest api
@@ -45,12 +45,12 @@ This is the Typescript based React application bundled using Create-React-App (C
 
 * **components:** Contains all the shared UI components such as reusable dropdown inputs and a paginated table component
 * **pages:**  Contains all the pages in the app which for now is only the base phone list page
-* **service:** Contains the service that commuicates with the backend
+* **service:** Contains the service that consumes the rest api
 * **models:**  Contains the typescript models
 
 ### cypress-e2e
 This package contains sample BDD tests using the testing library cypress https://www.cypress.io/
-The tests are run against the deployed app https://jumia-task.vercel.app/ and the backend layer is mocked using the mocking mechanism available in cypress
+The tests are run against the deployed app https://jumia-task.vercel.app/ that can be changed in the file cypress.json and the backend layer is mocked using the mocking mechanism available in cypress
 it can be configured to run locally by changing the base url in cypress.json
 
 ### Steps to run
