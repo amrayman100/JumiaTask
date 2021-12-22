@@ -17,7 +17,7 @@ type FormValues = {
 
 export default function PhoneBookBase() {
     const [page, setPage] = useState(0);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(10);
     const [countryFiter, setCountryFilter] = useState<string | null>(null);
     const [stateFiter, setStateFilter] = useState<string | null>(null);
     const { t, i18n: { language } } = useTranslation();
