@@ -28,7 +28,6 @@ export default function PhoneBookBase() {
     const {
         register,
         control,
-        setValue,
         watch,
         formState: { errors, isValid },
     } = useForm<FormValues>({ mode: 'onChange' });
@@ -139,6 +138,7 @@ export default function PhoneBookBase() {
                     <Box className="mt-6" bg={bg}>
                         <Box margin="auto" bg={bg}>
                             <TablePaginated
+                                id={"phoneTable"}
                                 disableButton={disableButtonUtil}
                                 buttonDisabled={isButtonDisabled}
                                 columns={columns}

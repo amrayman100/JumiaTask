@@ -1,12 +1,7 @@
-import { Button } from "@chakra-ui/react";
-import { useEffect, useMemo, useState } from "react";
-import {
-    FaAngleLeft, FaAngleRight, FaFile,
-    FaSort,
-    FaSortDown,
-    FaSortUp
-} from "react-icons/fa";
-import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from "react-table";
+import {Button} from "@chakra-ui/react";
+import {useEffect, useMemo, useState} from "react";
+import {FaAngleLeft, FaAngleRight, FaFile, FaSort, FaSortDown, FaSortUp} from "react-icons/fa";
+import {useFilters, useGlobalFilter, usePagination, useSortBy, useTable} from "react-table";
 
 interface TablePaginationProps {
     setPerPage(num: any): void;
@@ -20,7 +15,8 @@ interface TablePaginationProps {
     handleCreate?(): void;
     createText?: string;
     buttonDisabled: boolean;
-    disableButton(): void
+    disableButton(): void;
+    id: string;
 }
 
 function TablePaginated({
@@ -32,7 +28,8 @@ function TablePaginated({
     perPage,
     totalPage,
     buttonDisabled,
-    disableButton
+    disableButton,
+    id,
 }: TablePaginationProps) {
     const {
         getTableProps,
@@ -40,7 +37,7 @@ function TablePaginated({
         headerGroups,
         prepareRow,
         page,
-        state: { pageIndex, pageSize, globalFilter },
+        state: {pageIndex},
     } = useTable(
         {
             columns,
@@ -54,7 +51,7 @@ function TablePaginated({
                     [state, currentPage]
                 );
             },
-            initialState: { pageIndex: currentPage },
+            initialState: {pageIndex: currentPage},
             manualPagination: true,
             pageCount: totalPage,
         },
@@ -67,9 +64,8 @@ function TablePaginated({
     const [isLocalButtonDisabled, setIsLocalButtonDisabled] = useState(buttonDisabled);
 
     useEffect(() => {
-        setIsLocalButtonDisabled(buttonDisabled)
-    }, [buttonDisabled])
-
+        setIsLocalButtonDisabled(buttonDisabled);
+    }, [buttonDisabled]);
 
     return (
         <div className="space-y-8">
@@ -98,17 +94,23 @@ function TablePaginated({
                                 className="relative z-0 inline-flex -space-x-px text-sm rounded-md shadow-sm mrgin-btn"
                                 aria-label="Pagination">
                                 <Button
+                                    id={"previous"}
                                     mr="10px"
                                     disabled={isLocalButtonDisabled}
-                                    onClick={() => { setPage((s: number) => (s === 0 ? 0 : s - 1)); pageIndex > 0 && disableButton() }}
-                                >
+                                    onClick={() => {
+                                        setPage((s: number) => (s === 0 ? 0 : s - 1));
+                                        pageIndex > 0 && disableButton();
+                                    }}>
                                     <FaAngleLeft className="w-4 h-4 text-gray-400" aria-hidden="true" />
                                     <span>{"Previous"}</span>
                                 </Button>
                                 <Button
+                                    id={"next"}
                                     disabled={isLocalButtonDisabled}
-                                    onClick={() => { setPage((s: number) => s + 1); disableButton() }}
-                                >
+                                    onClick={() => {
+                                        setPage((s: number) => s + 1);
+                                        disableButton();
+                                    }}>
                                     <span>{"Next"}</span>
                                     <FaAngleRight className="w-4 h-4 text-gray-400" aria-hidden="true" />
                                 </Button>
@@ -122,7 +124,7 @@ function TablePaginated({
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 Flipped">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 ScrollContent">
                         <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-md">
-                            <table {...getTableProps()} className="min-w-full divide-y divide-gray-200">
+                            <table {...getTableProps()} className="min-w-full divide-y divide-gray-200" id={id}>
                                 <thead className="bg-gray-100">
                                     {headerGroups.map((headerGroup: any) => (
                                         <tr {...headerGroup?.getHeaderGroupProps()}>
@@ -172,22 +174,21 @@ function TablePaginated({
                                                 </tr>
                                             );
                                         })) || (
-                                            <tr>
-                                                <td
-                                                    colSpan={columns.length}
-                                                    className="items-center content-center justify-center text-center">
-                                                    <FaFile />
-                                                    <span className="px-3 text-sm text-black">{"No data found"}</span>
-                                                </td>
-                                            </tr>
-                                        )}
+                                        <tr>
+                                            <td
+                                                colSpan={columns.length}
+                                                className="items-center content-center justify-center text-center">
+                                                <FaFile />
+                                                <span className="px-3 text-sm text-black">{"No data found"}</span>
+                                            </td>
+                                        </tr>
+                                    )}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
