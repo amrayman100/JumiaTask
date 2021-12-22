@@ -1,7 +1,9 @@
 package com.jumia.services.customers.service;
 
 import com.jumia.services.customers.entity.Customer;
+import com.jumia.services.customers.model.NumberValidationResponse;
 import com.jumia.services.customers.model.PaginatedPhoneNumberResponse;
+import com.jumia.services.customers.model.PhoneMetaData;
 import com.jumia.services.customers.model.PhoneNumberDTO;
 import org.springframework.data.domain.PageImpl;
 
@@ -57,5 +59,14 @@ public class CustomerServiceTestUtils {
         List<Customer> customers = new ArrayList<>();
         customers.add(new Customer(CUSTOMER_NAME_1, MALFORMED_NUMBER));
         return new PageImpl<>(customers);
+    }
+
+    public static NumberValidationResponse getResponse(boolean isValid){
+        return NumberValidationResponse.builder().isValid(isValid).origin(CAMEROON)
+                .code(CUSTOMER_CODE_1).build();
+    }
+
+    public static PhoneMetaData getPhoneMetaData(){
+        return PhoneMetaData.builder().countryName(CAMEROON).code("(212)").build();
     }
 }

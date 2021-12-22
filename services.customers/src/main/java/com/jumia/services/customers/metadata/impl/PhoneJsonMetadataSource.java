@@ -1,13 +1,17 @@
 package com.jumia.services.customers.metadata.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jumia.services.customers.logging.Loggable;
 import com.jumia.services.customers.metadata.PhoneMetadataSource;
 import com.jumia.services.customers.model.PhoneMetaData;
 import com.jumia.services.customers.validator.PhoneNumberValidator;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+@Loggable
+@Repository
 public class PhoneJsonMetadataSource implements PhoneMetadataSource {
 
     @Override

@@ -4,8 +4,8 @@ import com.jumia.services.customers.exception.CodeNotFoundException;
 import com.jumia.services.customers.exception.MetadataSourceNotSetException;
 import com.jumia.services.customers.exception.NumberTooSmallException;
 import com.jumia.services.customers.logging.Loggable;
+import com.jumia.services.customers.matcher.NumberMatcher;
 import com.jumia.services.customers.matcher.impl.PhoneNumberMatcher;
-import com.jumia.services.customers.metadata.impl.PhoneJsonMetadataSource;
 import com.jumia.services.customers.model.NumberValidationResponse;
 import com.jumia.services.customers.model.PaginatedPhoneNumberResponse;
 import com.jumia.services.customers.model.PhoneMetaData;
@@ -25,16 +25,17 @@ public class CustomerPhoneServiceImpl implements CustomerPhoneService {
 
     CustomerRepository customerRepository;
 
+    NumberMatcher phoneNumberMatcher;
+
     @Autowired
-    public CustomerPhoneServiceImpl(CustomerRepository customerRepository){
+    public CustomerPhoneServiceImpl(CustomerRepository customerRepository,NumberMatcher numberMatcher){
         this.customerRepository = customerRepository;
+        this.phoneNumberMatcher = numberMatcher;
     }
 
     public PaginatedPhoneNumberResponse getCustomerPhoneNumbers(Pageable pageable, String queryCountry, String queryState)  {
         Page<Customer> customers;
         List<PhoneNumberDTO> filteredPhoneNumberModels = new ArrayList<>();
-        PhoneJsonMetadataSource jsonMetadataSource = new PhoneJsonMetadataSource();
-        PhoneNumberMatcher phoneNumberMatcher= new PhoneNumberMatcher(jsonMetadataSource);
         PhoneMetaData phoneMetaData = getPhoneMetaData(queryCountry,phoneNumberMatcher);
         if(phoneMetaData == null){
             customers = customerRepository.findAll(pageable);
@@ -54,11 +55,11 @@ public class CustomerPhoneServiceImpl implements CustomerPhoneService {
                 .build();
     }
 
-    private PhoneMetaData getPhoneMetaData(String country, PhoneNumberMatcher phoneNumberMatcher){
+    private PhoneMetaData getPhoneMetaData(String country, NumberMatcher phoneNumberMatcher){
         return phoneNumberMatcher.getPhoneMetaData(country);
     }
 
-    private PhoneNumberDTO getPhoneNumberDTO(String number, String name, PhoneNumberMatcher phoneNumberMatcher)  {
+    private PhoneNumberDTO getPhoneNumberDTO(String number, String name, NumberMatcher phoneNumberMatcher)  {
         try {
             NumberValidationResponse numberValidationResponse = phoneNumberMatcher.getPhoneType(number);
             String state = numberValidationResponse.isValid() ? "Valid" : "Invalid";
