@@ -44,8 +44,8 @@ export default function PhoneBookBase() {
     useEffect(() => {
         setIsButtonDisabled(false);
         responseData && responseData?.phoneNumberList.length > 0 && setPhoneNumberList(responseData?.phoneNumberList);
-        if (responseData?.phoneNumberList.length == 1) {
-            setPage(page - 0)
+        if (responseData?.phoneNumberList.length === 0) {
+            setPage(page - 1)
         }
     }, [responseData]);
 
@@ -57,12 +57,10 @@ export default function PhoneBookBase() {
         error && setIsButtonDisabled(false);
     }, [error])
 
-
-
     useEffect(() => {
         setPage(0);
         setCountryFilter(watchCountry);
-        setStateFilter(watchState)
+        setStateFilter(watchState);
     }, [watchCountry, watchState])
 
     const columns =
