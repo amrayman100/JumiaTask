@@ -22,7 +22,7 @@ run the command "docker-compose up" from that directory
 * After a few minutes when the 
 command is done and you can see from the logs in the terminal that the frontend project has been built and spring boot is running navigate to http://localhost:9090/ to the web app
 
-* To run without docker run the backend application as a basic spring boot project and for the frontend run the commands "npm install" and "npm start"
+* To run without docker run the backend application as a basic spring boot project and for the frontend run the commands "npm install" and "npm start", the project uses jdk 8
 
 ## Packages/modules
 ### services.customer
